@@ -1,0 +1,26 @@
+name: Arturo BC - Pruebas Unitarias en Java
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Clonar el Repositorio
+        uses: actions/checkout@v3
+
+      - name: ☕ Configurar JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: 🚀 Ejecutar Pruebas con Maven
+        run: mvn test
